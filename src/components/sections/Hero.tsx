@@ -14,12 +14,12 @@ export function Hero() {
 
         <h1
           aria-label="Save more. Earn more."
-          className="flex flex-col items-center gap-y-0 [font-family:var(--font-realx-display)] text-5xl font-black tracking-normal uppercase sm:text-6xl md:text-7xl [&>span]:leading-none"
+          className="flex flex-col items-center gap-y-0 [font-family:var(--font-realx-hanson)] text-5xl font-black tracking-normal uppercase sm:text-6xl md:text-7xl [&>span]:leading-none"
         >
           <span className="text-[var(--realx-green)]">Save</span>
-          <span className="italic text-black">More.</span>
+          <span className="skew-x-[-8deg] text-black">More.</span>
           <span className="text-[var(--realx-green)]">Earn</span>
-          <span className="italic text-black">More.</span>
+          <span className="skew-x-[-8deg] text-black">More.</span>
         </h1>
 
         <p className="mt-8 max-w-xl text-base leading-relaxed text-[#4c4c4c] sm:text-xl">
