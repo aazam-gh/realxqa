@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { PlaceholderPage } from '@/components/layout/PlaceholderPage'
+import { InternshipsPage } from '@/pages/InternshipsPage'
 
 export const Route = createFileRoute('/internships')({
-  component: InternshipsPage,
+  component: InternshipsRoute,
 })
 
-function InternshipsPage() {
-  return <PlaceholderPage title="Internships" />
+function InternshipsRoute() {
+  return <InternshipsPage />
 }

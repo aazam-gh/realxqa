@@ -1,11 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { PlaceholderPage } from '@/components/layout/PlaceholderPage'
+import { termsContent } from '@/content/legal'
+import { LegalPage } from '@/pages/LegalPage'
 
 export const Route = createFileRoute('/terms-and-conditions')({
-  component: TermsAndConditionsPage,
+  component: TermsAndConditionsRoute,
 })
 
-function TermsAndConditionsPage() {
-  return <PlaceholderPage title="Terms and Conditions" />
+function TermsAndConditionsRoute() {
+  return <LegalPage content={termsContent} />
 }

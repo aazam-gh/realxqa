@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { PlaceholderPage } from '@/components/layout/PlaceholderPage'
+import { DownloadPage } from '@/pages/DownloadPage'
 
 export const Route = createFileRoute('/download')({
-  component: DownloadPage,
+  component: DownloadRoute,
 })
 
-function DownloadPage() {
-  return <PlaceholderPage title="Download realX" />
+function DownloadRoute() {
+  return <DownloadPage />
 }
