@@ -102,7 +102,6 @@ src/content/site.ts
 - Do not leave plain `<a>` tags or `href=` usage for internal routes.
 - Keep only routes that are part of the current public site surface.
 - Current useful empty routes are:
-  - `/download`
   - `/internships`
   - `/support`
   - `/privacy-policy`

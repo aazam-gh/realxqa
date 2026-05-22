@@ -1,65 +1,47 @@
-import { Link } from '@tanstack/react-router'
 import { ArrowDownCircle } from 'lucide-react'
 
 import { RealXText } from '@/components/ui/RealXText'
-import { realXAppIcon } from '@/content/siteConfig'
+import { appStoreUrl, realXAppIcon } from '@/content/siteConfig'
 
 type RealXDownloadButtonProps = {
+  href?: string
   label: string
   variant?: 'header' | 'solid'
-} & (
-  | {
-      href: string
-      to?: never
-    }
-  | {
-      href?: never
-      to?: '/download'
-    }
-)
+}
 
 export function RealXDownloadButton({
-  href,
-  to,
+  href = appStoreUrl,
   label,
   variant = 'solid',
 }: RealXDownloadButtonProps) {
   const variantClass =
     variant === 'header'
-      ? 'min-w-[169px] bg-[var(--realx-green)] px-4 py-2 text-xs text-white hover:bg-[var(--realx-green-strong)] sm:min-w-[180px]'
-      : 'min-w-[130px] bg-black px-3 py-2 text-[11px] text-white hover:bg-neutral-900 sm:min-w-[210px] sm:px-4 sm:text-xs'
+      ? 'h-[42px] w-[178px] bg-[var(--realx-green)] px-2 text-[17px] text-white shadow-[0_10px_24px_-16px_rgba(24,184,82,0.8)] hover:bg-[var(--realx-green-strong)]'
+      : 'h-[43px] w-[212px] bg-black px-2 text-[17px] text-white shadow-[0_12px_28px_-18px_rgba(0,0,0,0.75)] hover:bg-neutral-900'
 
-  const className = `inline-flex items-center justify-center gap-1.5 rounded-full font-medium transition ${variantClass}`
+  const className = `inline-grid grid-cols-[27px_1fr_20px] items-center gap-1.5 overflow-hidden rounded-xl font-normal leading-none whitespace-nowrap transition ${variantClass}`
   const content = (
     <>
       <img
         src={realXAppIcon.src}
         srcSet={realXAppIcon.srcSet}
-        sizes="28px"
+        sizes="27px"
         alt=""
         aria-hidden="true"
-        className="size-7 rounded-lg"
+        className="size-[27px] rounded-lg"
         width={realXAppIcon.width}
         height={realXAppIcon.height}
       />
-      <span>
+      <span className="min-w-0 text-center">
         <RealXText text={label} />
       </span>
-      <ArrowDownCircle className="size-4 shrink-0" strokeWidth={2.25} />
+      <ArrowDownCircle className="size-5 shrink-0" strokeWidth={1.5} />
     </>
   )
 
-  if (href !== undefined) {
-    return (
-      <a className={className} href={href} rel="noopener noreferrer">
-        {content}
-      </a>
-    )
-  }
-
   return (
-    <Link to={to ?? '/download'} className={className}>
+    <a className={className} href={href} rel="noopener noreferrer">
       {content}
-    </Link>
+    </a>
   )
 }

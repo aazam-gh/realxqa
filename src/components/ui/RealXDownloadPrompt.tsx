@@ -5,7 +5,6 @@ type RealXDownloadPromptProps = {
   caption?: string
   href?: string
   label?: string
-  to?: '/download'
 }
 
 export function RealXDownloadPrompt({
@@ -13,15 +12,10 @@ export function RealXDownloadPrompt({
   className = '',
   href,
   label = 'Download realX',
-  to = '/download',
 }: RealXDownloadPromptProps) {
   return (
     <div className={`flex flex-col items-center gap-2.5 ${className}`}>
-      {href ? (
-        <RealXDownloadButton href={href} label={label} />
-      ) : (
-        <RealXDownloadButton to={to} label={label} />
-      )}
+      <RealXDownloadButton href={href} label={label} />
       <p className="flex items-center gap-1.5 text-[11px] text-[#4c4c4c] sm:text-xs">
         <span
           aria-hidden="true"

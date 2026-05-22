@@ -52,13 +52,14 @@ Use browser verification for visual changes. If the site is already running on `
 Current public route surface:
 
 - `/`
-- `/download`
 - `/internships`
 - `/support`
 - `/privacy-policy`
 - `/terms-and-conditions`
 
 Do not add speculative routes like `/app`, `/delete-account`, `/fullstack-dev`, or `/mobile-intern` unless the product scope explicitly changes.
+
+Download CTAs currently link directly to the iOS App Store URL in `src/content/siteConfig.ts`. Add the production Google Play URL there when it is available.
 
 ## Project Shape
 
@@ -115,7 +116,6 @@ Most public copy lives in `src/content/*`:
 
 - `siteConfig.ts` for global links, footer text, and app store URL
 - `home.ts` for landing sections
-- `download.ts` for the download page title
 - `internships.ts` for careers content
 - `support.ts` for support copy and FAQs
 - `legal.ts` for privacy policy and terms content

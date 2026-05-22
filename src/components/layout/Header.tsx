@@ -13,7 +13,7 @@ export function Header() {
         </Link>
 
         <RealXDownloadButton
-          to={siteConfig.downloadTo}
+          href={siteConfig.downloadHref}
           label={siteConfig.headerCta}
           variant="header"
         />

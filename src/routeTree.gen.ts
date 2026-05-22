@@ -13,7 +13,6 @@ import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-condi
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as InternshipsRouteImport } from './routes/internships'
-import { Route as DownloadRouteImport } from './routes/download'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
@@ -36,11 +35,6 @@ const InternshipsRoute = InternshipsRouteImport.update({
   path: '/internships',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DownloadRoute = DownloadRouteImport.update({
-  id: '/download',
-  path: '/download',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,7 +43,6 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/download': typeof DownloadRoute
   '/internships': typeof InternshipsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/support': typeof SupportRoute
@@ -57,7 +50,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/download': typeof DownloadRoute
   '/internships': typeof InternshipsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/support': typeof SupportRoute
@@ -66,7 +58,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/download': typeof DownloadRoute
   '/internships': typeof InternshipsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/support': typeof SupportRoute
@@ -76,7 +67,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/download'
     | '/internships'
     | '/privacy-policy'
     | '/support'
@@ -84,7 +74,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/download'
     | '/internships'
     | '/privacy-policy'
     | '/support'
@@ -92,7 +81,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/download'
     | '/internships'
     | '/privacy-policy'
     | '/support'
@@ -101,7 +89,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DownloadRoute: typeof DownloadRoute
   InternshipsRoute: typeof InternshipsRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SupportRoute: typeof SupportRoute
@@ -138,13 +125,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InternshipsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/download': {
-      id: '/download'
-      path: '/download'
-      fullPath: '/download'
-      preLoaderRoute: typeof DownloadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -157,7 +137,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DownloadRoute: DownloadRoute,
   InternshipsRoute: InternshipsRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SupportRoute: SupportRoute,

@@ -14,7 +14,7 @@ export const realXAppIcon = {
 export const siteConfig = {
   name: 'realX',
   homeTo: '/',
-  downloadTo: '/download',
+  downloadHref: appStoreUrl,
   headerCta: 'Get the app',
   footerHeadline: 'Ready to save more as a student?',
   copyright: '© 2026 realX. All rights reserved.',
