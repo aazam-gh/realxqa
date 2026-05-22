@@ -1,37 +1,62 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowDownCircle } from 'lucide-react'
 
+import { RealXText } from '@/components/ui/RealXText'
+
 type RealXDownloadButtonProps = {
-  to: '/download'
   label: string
   variant?: 'header' | 'solid'
-}
+} & (
+  | {
+      href: string
+      to?: never
+    }
+  | {
+      href?: never
+      to?: '/download'
+    }
+)
 
 export function RealXDownloadButton({
+  href,
   to,
   label,
   variant = 'solid',
 }: RealXDownloadButtonProps) {
   const variantClass =
     variant === 'header'
-      ? 'bg-[var(--realx-green)] px-3 py-2 text-sm text-white hover:bg-[var(--realx-green-strong)] sm:px-5 sm:text-lg'
-      : 'bg-black px-4 py-3 text-base text-white hover:bg-neutral-900 sm:px-5 sm:text-xl'
+      ? 'min-w-[169px] bg-[var(--realx-green)] px-4 py-2 text-xs text-white hover:bg-[var(--realx-green-strong)] sm:min-w-[180px]'
+      : 'min-w-[130px] bg-black px-3 py-2 text-[11px] text-white hover:bg-neutral-900 sm:min-w-[210px] sm:px-4 sm:text-xs'
 
-  return (
-    <Link
-      to={to}
-      className={`inline-flex items-center gap-2 rounded-full font-medium transition ${variantClass}`}
-    >
+  const className = `inline-flex items-center justify-center gap-1.5 rounded-full font-medium transition ${variantClass}`
+  const content = (
+    <>
       <img
         src="/images/brand/app-icon.png"
         alt=""
         aria-hidden="true"
-        className="size-9 rounded-xl sm:size-11"
+        className="size-7 rounded-lg"
         width="48"
         height="48"
       />
-      <span>{label}</span>
-      <ArrowDownCircle className="size-5 shrink-0 sm:size-6" strokeWidth={2.25} />
+      <span>
+        <RealXText text={label} />
+      </span>
+      <ArrowDownCircle className="size-4 shrink-0" strokeWidth={2.25} />
+    </>
+  )
+
+  if (href !== undefined) {
+    return (
+      <a className={className} href={href} rel="noopener noreferrer">
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <Link to={to ?? '/download'} className={className}>
+      {content}
     </Link>
   )
 }

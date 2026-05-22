@@ -1,38 +1,44 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "RealX Poppins";
-  src: url("/fonts/poppins.ttf") format("truetype");
+  font-family: 'RealX Poppins';
+  src: url('/fonts/poppins.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RealX Hanson";
-  src: url("/fonts/Hanson-Bold.otf") format("opentype");
+  font-family: 'RealX Hanson';
+  src: url('/fonts/Hanson-Bold.otf') format('opentype');
   font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RealX Phonk";
-  src: url("/fonts/phonk.otf") format("opentype");
+  font-family: 'RealX Phonk';
+  src: url('/fonts/phonk.otf') format('opentype');
   font-display: swap;
 }
 
 :root {
   font-family:
-    "RealX Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    'RealX Poppins',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   color: #050505;
   background: #f7f7f5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --font-realx-sans: "RealX Poppins", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-realx-hanson: "RealX Hanson", Impact, Haettenschweiler, "Arial Black",
-    sans-serif;
-  --font-realx-accent: "RealX Phonk", "Arial Black", sans-serif;
+  --font-realx-sans:
+    'RealX Poppins', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-realx-hanson:
+    'RealX Hanson', Impact, Haettenschweiler, 'Arial Black', sans-serif;
+  --font-realx-accent: 'RealX Phonk', 'Arial Black', sans-serif;
   --realx-black: #000000;
   --realx-white: #ffffff;
   --realx-green: #55b85f;
@@ -56,7 +62,6 @@ body,
 
 html {
   background: var(--realx-surface);
-  scroll-behavior: smooth;
 }
 
 body {
