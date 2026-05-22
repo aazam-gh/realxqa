@@ -12,7 +12,7 @@ export function HomeFaq() {
   }
 
   return (
-    <section className="bg-[#f5f5f5] px-5 py-20 sm:px-7 sm:py-26 lg:py-28">
+    <section className="bg-[#f5f5f5] px-5 py-16 sm:px-7 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="text-lg font-semibold text-[#3f3f3f] sm:text-2xl">

@@ -2,7 +2,7 @@ import { homeContent } from '@/content/home'
 
 export function SavingsFeatures() {
   return (
-    <section className="bg-(--realx-green) px-5 py-20 sm:px-7 sm:py-36">
+    <section className="bg-(--realx-green) px-5 py-16 sm:px-7 sm:py-24">
       <div className="mx-auto max-w-[1280px]">
         <div className="mx-auto max-w-[624px] text-center">
           <p className="text-xs font-semibold text-white/80">
@@ -15,7 +15,7 @@ export function SavingsFeatures() {
           </h2>
         </div>
 
-        <div className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
           {homeContent.savings.features.map((feature) => (
             <article key={feature.title}>
               <div className="relative grid aspect-[308/250] place-items-end overflow-hidden rounded-lg bg-[#f5f5f5] px-5 pt-5">

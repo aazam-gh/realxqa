@@ -11,7 +11,7 @@ const stepImage = (name: string) => ({
 
 export const homeContent = {
   partners: {
-    eyebrow: 'Popular among students at',
+    eyebrow: 'Used by students from',
     logos: [
       {
         src: '/images/partners/student-logo-1.png',

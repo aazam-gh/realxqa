@@ -4,7 +4,7 @@ import { realXAppIcon } from '@/content/siteConfig'
 
 export function StudentJourney() {
   return (
-    <section className="bg-[#f5f5f5] px-5 py-24 text-center text-black sm:px-7 sm:py-32">
+    <section className="bg-[#f5f5f5] px-5 py-16 text-center text-black sm:px-7 sm:py-24">
       <div className="mx-auto flex max-w-[632px] flex-col items-center">
         <img
           src={realXAppIcon.src}
