@@ -1,204 +1,139 @@
-Welcome to your new TanStack Start app! 
+# RealX Public Site
 
-# Getting Started
+RealX is a lightweight public landing site for Qatar's student rewards ecosystem. This repo is a Vite + React + TypeScript + TanStack Router + Tailwind CSS rebuild of the public site, focused on fast static pages, real assets, and maintainable section-based code.
 
-To run this application:
+This is not an app platform, dashboard, backend, or merchant portal.
+
+## Stack
+
+- Vite
+- React
+- TypeScript
+- TanStack Router
+- Tailwind CSS
+- lucide-react for icons
+
+Use `pnpm` for all scripts.
+
+## Local Development
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-# Building For Production
+The dev server is expected to run on `http://localhost:3000`.
 
-To build this application for production:
+## Scripts
 
 ```bash
+pnpm dev       # Start Vite on port 3000
+pnpm check     # Check Prettier formatting
+pnpm lint      # Run ESLint
+pnpm test      # Run Vitest, currently passes with no test files
+pnpm build     # Build production assets
+pnpm preview   # Preview the production build
+pnpm format    # Format and apply ESLint fixes
+```
+
+Before a commit that changes routes, imports, layout, or public pages, run:
+
+```bash
+pnpm check
+pnpm lint
+pnpm exec tsc --noEmit
 pnpm build
 ```
 
-## Testing
+Use browser verification for visual changes. If the site is already running on `localhost:3000`, verify against that server instead of starting another one.
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## Public Routes
 
-```bash
-pnpm test
+Current public route surface:
+
+- `/`
+- `/download`
+- `/internships`
+- `/support`
+- `/privacy-policy`
+- `/terms-and-conditions`
+
+Do not add speculative routes like `/app`, `/delete-account`, `/fullstack-dev`, or `/mobile-intern` unless the product scope explicitly changes.
+
+## Project Shape
+
+```txt
+src/routes/*                  Thin TanStack route wiring
+src/pages/*                   Page composition only
+src/components/layout/*       Layout, Header, Footer
+src/components/sections/*     Specific page/landing sections
+src/components/ui/*           Small reusable UI pieces
+src/content/*                 Shared copy, links, legal/support content
+public/images/*               RealX visual assets
+public/fonts/*                Local font files
 ```
 
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `pnpm add @tailwindcss/vite tailwindcss --dev`
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
-pnpm lint
-pnpm format
-pnpm check
-```
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Pages should look like this: import the layout and sections, then compose them. Keep route files thin and keep section markup out of routes.
 
 ```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
+export function HomePage() {
   return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
+    <Layout>
+      <Hero />
+      <StudentPartners />
+      <SavingsFeatures />
+    </Layout>
   )
 }
 ```
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+## Architecture Rules
 
-# Demo files
+- Keep this a static public React site until there is a real product requirement for more.
+- Prefer simple components and structured content objects over clever abstractions.
+- Use direct imports. Avoid broad barrel files.
+- Add shared UI only when reuse is real.
+- Keep components mostly pure and stateless.
+- Do not add global state, effects, client data layers, backend clients, analytics layers, or TanStack Query.
+- Do not copy Framer-generated HTML, class names, or component structure into the React app.
+- Use TanStack `Link` for internal navigation.
+- External links and `mailto:` links can use normal anchors.
 
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
+## Performance Rules
 
-# Learn More
+- Use existing assets first.
+- Give images stable `width`/`height` or an aspect-ratio wrapper.
+- Eager-load only intentional first-viewport images.
+- Lazy-load below-fold images.
+- Keep large assets out of tiny UI elements.
+- Use `font-display: swap` for local fonts.
+- Avoid new dependencies unless the current stack truly cannot solve the problem.
 
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+## Content
 
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+Most public copy lives in `src/content/*`:
+
+- `siteConfig.ts` for global links, footer text, and app store URL
+- `home.ts` for landing sections
+- `download.ts` for the download page title
+- `internships.ts` for careers content
+- `support.ts` for support copy and FAQs
+- `legal.ts` for privacy policy and terms content
+
+When copy becomes hard to scan inside a component, move it into content. When content is only a tiny local label, keeping it in the section is fine.
+
+## Commit Checklist
+
+Before pushing:
+
+1. Run `pnpm check`.
+2. Run `pnpm lint`.
+3. Run `pnpm exec tsc --noEmit`.
+4. Run `pnpm build`.
+5. Smoke-test affected pages in the browser at mobile and desktop widths.
+6. Check for horizontal overflow and console warnings/errors.
+7. Review large image additions before committing.
+
+## Important Repo Contract
+
+Read `AGENTS.md` before making changes. It is the source of truth for collaboration, architecture, performance, routing, and verification rules in this repo.
