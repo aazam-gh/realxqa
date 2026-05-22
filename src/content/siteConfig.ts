@@ -3,6 +3,14 @@ export const appStoreUrl =
 
 export const supportEmail = 'info@realx.qa'
 
+export const realXAppIcon = {
+  src: '/images/brand/app-icon-64.png',
+  srcSet:
+    '/images/brand/app-icon-64.png 64w, /images/brand/app-icon-128.png 128w',
+  width: 64,
+  height: 64,
+} as const
+
 export const siteConfig = {
   name: 'realX',
   homeTo: '/',

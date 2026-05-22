@@ -19,10 +19,12 @@ export function GettingStartedSteps() {
             <article className="relative" key={step.title}>
               <div className="grid aspect-308/250 place-items-center overflow-hidden rounded-lg border border-(--realx-border) bg-white">
                 <img
-                  src={step.image}
+                  src={step.image.src}
+                  srcSet={step.image.srcSet}
+                  sizes={step.image.sizes}
                   alt={step.alt}
-                  width={step.width}
-                  height={step.height}
+                  width={step.image.width}
+                  height={step.image.height}
                   loading="lazy"
                   className="h-full w-full object-contain"
                 />

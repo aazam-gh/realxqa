@@ -1,16 +1,19 @@
 import { homeContent } from '@/content/home'
 import { RealXDownloadPrompt } from '@/components/ui/RealXDownloadPrompt'
+import { realXAppIcon } from '@/content/siteConfig'
 
 export function StudentJourney() {
   return (
     <section className="bg-[#f5f5f5] px-5 py-24 text-center text-black sm:px-7 sm:py-32">
       <div className="mx-auto flex max-w-[632px] flex-col items-center">
         <img
-          src="/images/brand/app-icon.png"
+          src={realXAppIcon.src}
+          srcSet={realXAppIcon.srcSet}
+          sizes="64px"
           alt=""
           aria-hidden="true"
-          width="3328"
-          height="3328"
+          width={realXAppIcon.width}
+          height={realXAppIcon.height}
           loading="lazy"
           className="size-16 rounded-2xl"
         />

@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowDownCircle } from 'lucide-react'
 
 import { RealXText } from '@/components/ui/RealXText'
+import { realXAppIcon } from '@/content/siteConfig'
 
 type RealXDownloadButtonProps = {
   label: string
@@ -32,12 +33,14 @@ export function RealXDownloadButton({
   const content = (
     <>
       <img
-        src="/images/brand/app-icon.png"
+        src={realXAppIcon.src}
+        srcSet={realXAppIcon.srcSet}
+        sizes="28px"
         alt=""
         aria-hidden="true"
         className="size-7 rounded-lg"
-        width="48"
-        height="48"
+        width={realXAppIcon.width}
+        height={realXAppIcon.height}
       />
       <span>
         <RealXText text={label} />

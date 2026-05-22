@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Plus, Send } from 'lucide-react'
 
 import { homeContent } from '@/content/home'
-import { supportEmail } from '@/content/siteConfig'
+import { realXAppIcon, supportEmail } from '@/content/siteConfig'
 import { RealXText } from '@/components/ui/RealXText'
 
 export function HomeFaq() {
@@ -82,11 +82,13 @@ export function HomeFaq() {
             className="inline-flex w-fit items-center gap-2.5 rounded-[18px] border border-black/10 bg-white px-3.5 py-2 text-sm font-medium text-black transition hover:border-black/30 sm:px-4 sm:py-2.5 sm:text-base"
           >
             <img
-              src="/images/brand/app-icon.png"
+              src={realXAppIcon.src}
+              srcSet={realXAppIcon.srcSet}
+              sizes="(min-width: 640px) 32px, 28px"
               alt=""
               aria-hidden="true"
-              width="3328"
-              height="3328"
+              width={realXAppIcon.width}
+              height={realXAppIcon.height}
               loading="lazy"
               className="size-7 rounded-lg sm:size-8"
             />

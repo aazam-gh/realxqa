@@ -1,3 +1,14 @@
+const stepImageSizes =
+  '(min-width: 1024px) 308px, (min-width: 640px) calc((100vw - 88px) / 2), calc(100vw - 40px)'
+
+const stepImage = (name: string) => ({
+  src: `/images/features/${name}-960.jpg`,
+  srcSet: `/images/features/${name}-640.jpg 640w, /images/features/${name}-960.jpg 960w, /images/features/${name}-1280.jpg 1280w`,
+  sizes: stepImageSizes,
+  width: 960,
+  height: 780,
+})
+
 export const homeContent = {
   partners: {
     eyebrow: 'Popular among students at',
@@ -73,34 +84,26 @@ export const homeContent = {
       {
         title: 'Download the app',
         body: 'Get realX and start saving in seconds.',
-        image: '/images/features/brand-icon-grid.png',
+        image: stepImage('brand-icon-grid'),
         alt: 'realX app icon grid',
-        width: 5550,
-        height: 4512,
       },
       {
         title: 'Verify as a student',
         body: 'Enter your details to access exclusive deals.',
-        image: '/images/features/streak-card.png',
+        image: stepImage('streak-card'),
         alt: 'Student verification card illustration',
-        width: 5550,
-        height: 4512,
       },
       {
         title: 'Browse deals',
         body: 'Explore categories like food, coffee, groceries, and more.',
-        image: '/images/features/walk-card.png',
+        image: stepImage('walk-card'),
         alt: 'Student deal browsing card illustration',
-        width: 5550,
-        height: 4512,
       },
       {
         title: 'Redeem and earn',
         body: 'Show the deal, vendor enters 4-digit code, get instant cashback as points to use like gift cards.',
-        image: '/images/features/notification-icon.png',
+        image: stepImage('notification-icon'),
         alt: 'realX redemption notification icon',
-        width: 3700,
-        height: 3008,
       },
     ],
   },
