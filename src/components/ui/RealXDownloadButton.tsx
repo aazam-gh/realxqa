@@ -1,13 +1,14 @@
+import { Link } from '@tanstack/react-router'
 import { ArrowDownCircle } from 'lucide-react'
 
 type RealXDownloadButtonProps = {
-  href: string
+  to: '/download'
   label: string
   variant?: 'header' | 'solid'
 }
 
 export function RealXDownloadButton({
-  href,
+  to,
   label,
   variant = 'solid',
 }: RealXDownloadButtonProps) {
@@ -17,8 +18,8 @@ export function RealXDownloadButton({
       : 'bg-black px-4 py-3 text-base text-white hover:bg-neutral-900 sm:px-5 sm:text-xl'
 
   return (
-    <a
-      href={href}
+    <Link
+      to={to}
       className={`inline-flex items-center gap-2 rounded-full font-medium transition ${variantClass}`}
     >
       <img
@@ -31,6 +32,6 @@ export function RealXDownloadButton({
       />
       <span>{label}</span>
       <ArrowDownCircle className="size-5 shrink-0 sm:size-6" strokeWidth={2.25} />
-    </a>
+    </Link>
   )
 }

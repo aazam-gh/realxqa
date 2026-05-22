@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 import { siteConfig } from '@/content/site'
 
 export function Footer() {
@@ -14,10 +16,10 @@ export function Footer() {
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/75">
             {siteConfig.footerLinks.map((link) => (
-              <li key={link.href}>
-                <a className="transition hover:text-white" href={link.href}>
+              <li key={link.to}>
+                <Link className="transition hover:text-white" to={link.to}>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
