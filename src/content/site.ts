@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: 'realX',
   homeTo: '/',
-  homeHash: 'hero',
   downloadTo: '/download',
   headerCta: 'Get the app',
   footerHeadline: 'Ready to save more as a student?',

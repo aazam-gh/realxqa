@@ -8,11 +8,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-black px-5 py-5 text-white sm:px-7 sm:py-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-        <Link
-          to={siteConfig.homeTo}
-          hash={siteConfig.homeHash}
-          aria-label="realX home"
-        >
+        <Link to={siteConfig.homeTo} resetScroll aria-label="realX home">
           <BrandLogo className="h-auto w-32 sm:w-44" />
         </Link>
 
