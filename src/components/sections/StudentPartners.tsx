@@ -2,8 +2,8 @@ import { homeContent } from '@/content/home'
 
 export function StudentPartners() {
   return (
-    <section className="bg-white px-5 pb-8 pt-2 sm:px-7 sm:pb-10 sm:pt-3">
-      <div className="mx-auto max-w-[428px]">
+    <section className="bg-white px-5 pb-8 sm:px-7 sm:pb-10 sm:pt-3">
+      <div className="mx-auto max-w-107">
         {/* <p className="text-center text-[11px] font-medium text-(--realx-muted)">
           {homeContent.partners.eyebrow}
         </p> */}
