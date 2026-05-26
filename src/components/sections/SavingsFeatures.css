@@ -183,6 +183,30 @@
   }
 }
 
+@media ((hover: none) and (max-width: 639px)),
+  ((pointer: coarse) and (max-width: 639px)) {
+  .realx-feature-card[data-mobile-active='true'] .realx-feature-card__media {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -34px rgba(0, 0, 0, 0.5);
+  }
+
+  .realx-feature-card[data-mobile-active='true']
+    .realx-feature-card__media::after {
+    animation: realx-card-shine 620ms ease-out;
+    opacity: 1;
+  }
+
+  .realx-feature-card[data-mobile-active='true'] .realx-feature-card__image {
+    translate: 0 5%;
+    scale: 1.025;
+  }
+
+  .realx-feature-card[data-mobile-active='true'] .realx-feature-card__badge {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--badge-tilt)) scale(1);
+  }
+}
+
 @supports (animation-timeline: view()) {
   .realx-feature-card {
     animation: realx-scroll-lift both;

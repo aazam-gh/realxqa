@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Check, Percent, Ticket, Zap } from 'lucide-react'
 
 import { homeContent } from '@/content/home'
@@ -11,7 +12,73 @@ const badgeIcons = {
   zap: { Icon: Zap, size: 12, strokeWidth: 2.6 },
 }
 
+const mobileMotionQuery =
+  '((hover: none) and (max-width: 639px)), ((pointer: coarse) and (max-width: 639px))'
+
+function getActiveFeatureIndex(cards: Array<HTMLElement | null>) {
+  const bandTop = window.innerHeight * 0.42
+  const bandBottom = window.innerHeight * 0.58
+
+  const activeIndex = cards.findIndex((card) => {
+    if (!card) {
+      return false
+    }
+
+    const rect = card.getBoundingClientRect()
+
+    return rect.top <= bandBottom && rect.bottom >= bandTop
+  })
+
+  return activeIndex === -1 ? null : activeIndex
+}
+
 export function SavingsFeatures() {
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState<number | null>(
+    null,
+  )
+  const cardRefs = useRef<Array<HTMLElement | null>>([])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(mobileMotionQuery)
+    let observer: IntersectionObserver | undefined
+
+    const updateActiveFeature = () => {
+      setActiveFeatureIndex(
+        mediaQuery.matches ? getActiveFeatureIndex(cardRefs.current) : null,
+      )
+    }
+
+    const connectObserver = () => {
+      observer?.disconnect()
+
+      if (!mediaQuery.matches) {
+        setActiveFeatureIndex(null)
+        return
+      }
+
+      observer = new IntersectionObserver(updateActiveFeature, {
+        rootMargin: '-36% 0px -36% 0px',
+        threshold: 0,
+      })
+
+      cardRefs.current.forEach((card) => {
+        if (card) {
+          observer?.observe(card)
+        }
+      })
+
+      updateActiveFeature()
+    }
+
+    connectObserver()
+    mediaQuery.addEventListener('change', connectObserver)
+
+    return () => {
+      mediaQuery.removeEventListener('change', connectObserver)
+      observer?.disconnect()
+    }
+  }, [])
+
   return (
     <section className="bg-(--realx-green) px-5 py-14 sm:px-7 sm:py-20 lg:px-14">
       <div className="mx-auto max-w-7xl">
@@ -27,12 +94,21 @@ export function SavingsFeatures() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
-          {homeContent.savings.features.map((feature) => {
+          {homeContent.savings.features.map((feature, index) => {
             const badgeIcon = badgeIcons[feature.badge.icon]
             const BadgeIcon = badgeIcon.Icon
 
             return (
-              <article className="realx-feature-card" key={feature.title}>
+              <article
+                className="realx-feature-card"
+                data-mobile-active={
+                  activeFeatureIndex === index ? 'true' : undefined
+                }
+                key={feature.title}
+                ref={(node) => {
+                  cardRefs.current[index] = node
+                }}
+              >
                 <div className="realx-feature-card__media relative grid aspect-[469/461] items-end justify-items-center overflow-hidden rounded-[22px] bg-[#f4f4f4] px-7 pt-10">
                   <span
                     aria-hidden="true"
