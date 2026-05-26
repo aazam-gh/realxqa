@@ -3,7 +3,7 @@ import { RealXPhoneTrio } from '@/components/ui/RealXPhoneTrio'
 
 function HeroPhoneShowcase() {
   return (
-    <div className="flex w-full flex-col items-center min-[760px]:w-fit min-[760px]:self-start min-[760px]:justify-self-end">
+    <div className="flex min-w-0 w-full flex-col items-center min-[760px]:w-fit min-[760px]:self-start min-[760px]:justify-self-end">
       <RealXPhoneTrio fetchPriority="high" loading="eager" />
       <RealXDownloadPrompt
         className="mt-4 origin-center min-[760px]:hidden"
@@ -19,8 +19,8 @@ export function Hero() {
       id="hero"
       className="relative isolate overflow-hidden rounded-t-2xl bg-white px-4 pt-10 text-center sm:rounded-t-3xl sm:px-8 min-[760px]:pt-6 min-[760px]:text-left min-[1100px]:pt-8 lg:px-16 xl:pt-10"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-0 pb-10 sm:pb-12 min-[760px]:grid-cols-[minmax(0,1fr)_minmax(340px,380px)] min-[760px]:items-start min-[760px]:gap-6 min-[760px]:pb-8 min-[1100px]:grid-cols-[minmax(0,1fr)_minmax(520px,1fr)] min-[1100px]:gap-10 xl:grid-cols-[minmax(0,1.1fr)_minmax(560px,0.9fr)] xl:gap-12">
-        <div className="flex w-full flex-col items-center text-center min-[760px]:items-start min-[760px]:text-left">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)] gap-0 pb-10 sm:pb-12 min-[760px]:grid-cols-[minmax(0,1fr)_minmax(340px,380px)] min-[760px]:items-start min-[760px]:gap-6 min-[760px]:pb-8 min-[1100px]:grid-cols-[minmax(0,1fr)_minmax(520px,1fr)] min-[1100px]:gap-10 xl:grid-cols-[minmax(0,1.1fr)_minmax(560px,0.9fr)] xl:gap-12">
+        <div className="flex min-w-0 w-full flex-col items-center text-center min-[760px]:items-start min-[760px]:text-left">
           <h1
             aria-label="Save more. Earn more."
             className="flex flex-col items-center gap-y-0.5 text-[56px] font-black tracking-[-0.02em] uppercase leading-[0.9] sm:text-[64px] min-[760px]:items-start min-[1100px]:text-[70px] xl:text-[76px]"

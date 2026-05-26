@@ -38,6 +38,13 @@ const phoneTrio = [
   realXPhoneScreens.xcard,
 ] as const
 
+// Mobile widths follow the phones' rendered aspect ratios so the trio scales inside the padded hero column.
+const phoneScreenClassNames = [
+  'relative z-10 h-auto w-[30.5%] shrink-0 object-contain object-top min-[1100px]:h-[86%] min-[1100px]:w-auto',
+  'relative z-30 h-auto w-[38.5%] shrink-0 object-contain object-top min-[1100px]:h-full min-[1100px]:w-auto',
+  'relative z-10 h-auto w-[29%] shrink-0 object-contain object-top min-[1100px]:h-[86%] min-[1100px]:w-auto',
+] as const
+
 export function RealXPhoneTrio({
   className = '',
   fetchPriority = 'auto',
@@ -45,7 +52,7 @@ export function RealXPhoneTrio({
 }: RealXPhoneTrioProps) {
   return (
     <div
-      className={`flex h-[79vw] max-h-[320px] w-[min(400px,100vw)] items-start justify-center gap-x-1 overflow-visible min-[1100px]:h-[450px] min-[1100px]:max-h-none min-[1100px]:w-[615px] min-[1100px]:max-w-none min-[1100px]:gap-x-8 xl:h-[560px] xl:w-[766px] xl:gap-x-10 ${className}`}
+      className={`flex aspect-[5/4] w-full max-w-[400px] min-w-0 items-start justify-center gap-x-0.5 overflow-visible min-[760px]:gap-x-1 min-[1100px]:h-[450px] min-[1100px]:max-w-none min-[1100px]:w-[615px] min-[1100px]:gap-x-8 xl:h-[560px] xl:w-[766px] xl:gap-x-10 ${className}`}
     >
       {phoneTrio.map((screen, index) => (
         <img
@@ -56,11 +63,7 @@ export function RealXPhoneTrio({
           height={screen.height}
           loading={loading}
           fetchPriority={fetchPriority}
-          className={
-            index === 1
-              ? 'relative z-30 h-full w-auto shrink-0 object-contain object-top'
-              : 'relative z-10 h-[86%] w-auto shrink-0 object-contain object-top'
-          }
+          className={phoneScreenClassNames[index]}
         />
       ))}
     </div>
