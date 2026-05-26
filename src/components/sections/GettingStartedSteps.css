@@ -1,0 +1,94 @@
+.realx-steps-grid {
+  position: relative;
+}
+
+.realx-step-card__media {
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease,
+    box-shadow 360ms ease;
+}
+
+.realx-step-card__media--link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.realx-step-card__media--link:focus-visible {
+  outline: 3px solid rgba(24, 184, 82, 0.32);
+  outline-offset: 4px;
+}
+
+.realx-step-card__number {
+  transition:
+    background-color 320ms ease,
+    color 320ms ease,
+    transform 320ms cubic-bezier(0.2, 1.45, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .realx-step-card:hover .realx-step-card__media {
+    transform: translateY(-4px);
+    border-color: rgba(24, 184, 82, 0.45);
+    box-shadow: 0 18px 38px -32px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@media (min-width: 1024px) {
+  .realx-steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 273px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(24, 184, 82, 0.95),
+      rgba(24, 184, 82, 0.08)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    pointer-events: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .realx-step-card {
+    animation: realx-scroll-lift both;
+    animation-range: entry 0% cover 34%;
+    animation-timeline: view();
+  }
+
+  .realx-step-card__number {
+    animation: realx-step-unlock both;
+    animation-range: entry 12% cover 30%;
+    animation-timeline: view();
+  }
+
+  .realx-steps-grid::before {
+    animation: realx-line-fill both;
+    animation-range: entry 20% cover 60%;
+    animation-timeline: view();
+  }
+}
+
+@keyframes realx-step-unlock {
+  from {
+    background-color: #f3f3f3;
+    color: #777777;
+    transform: scale(0.96);
+  }
+
+  to {
+    background-color: var(--realx-green);
+    color: white;
+    transform: scale(1);
+  }
+}
+
+@keyframes realx-line-fill {
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -46,7 +46,7 @@ function InternshipRoleCard({ role }: { role: InternshipRole }) {
       <p className="mt-3 text-[#4c4c4c]">{role.location}</p>
       <a
         href={`mailto:${supportEmail}?subject=${encodeURIComponent(role.subject)}`}
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 font-semibold text-white transition hover:bg-neutral-900"
+        className="mt-8 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 font-semibold text-white transition-colors duration-150 ease-out hover:bg-[var(--realx-green)]"
       >
         Apply Now
         <ArrowUpRight className="size-5" strokeWidth={2.25} />

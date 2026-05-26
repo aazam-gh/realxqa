@@ -16,10 +16,15 @@ export function RealXDownloadButton({
 }: RealXDownloadButtonProps) {
   const variantClass =
     variant === 'header'
-      ? 'h-[42px] w-[178px] bg-[var(--realx-green)] px-2 text-[17px] text-white shadow-[0_10px_24px_-16px_rgba(24,184,82,0.8)] hover:bg-[var(--realx-green-strong)]'
-      : 'h-[43px] w-[212px] bg-black px-2 text-[17px] text-white shadow-[0_12px_28px_-18px_rgba(0,0,0,0.75)] hover:bg-neutral-900'
+      ? 'h-[42px] w-[178px] bg-[var(--realx-green)] px-2 text-[17px] text-white shadow-[0_10px_24px_-16px_rgba(24,184,82,0.8)] hover:bg-[#22c866]'
+      : 'h-[43px] w-[212px] bg-black px-2 text-[17px] text-white shadow-[0_12px_28px_-18px_rgba(0,0,0,0.75)] hover:bg-[var(--realx-green)]'
 
-  const className = `inline-grid grid-cols-[27px_1fr_20px] items-center gap-1.5 overflow-hidden rounded-xl font-normal leading-none whitespace-nowrap transition ${variantClass}`
+  const className = `inline-grid grid-cols-[27px_1fr_20px] items-center gap-1.5 overflow-hidden rounded-xl font-normal leading-none whitespace-nowrap transition-colors duration-150 ease-out ${variantClass}`
+  const solidHoverClass = variant === 'solid' ? ' group/realx-black-button' : ''
+  const xHoverClass =
+    variant === 'solid'
+      ? 'transition-colors duration-150 ease-out group-hover/realx-black-button:text-black'
+      : undefined
   const content = (
     <>
       <img
@@ -33,14 +38,18 @@ export function RealXDownloadButton({
         height={realXAppIcon.height}
       />
       <span className="min-w-0 text-center">
-        <RealXText text={label} />
+        <RealXText text={label} xClassName={xHoverClass} />
       </span>
       <ArrowDownCircle className="size-5 shrink-0" strokeWidth={1.5} />
     </>
   )
 
   return (
-    <a className={className} href={href} rel="noopener noreferrer">
+    <a
+      className={`${className}${solidHoverClass}`}
+      href={href}
+      rel="noopener noreferrer"
+    >
       {content}
     </a>
   )

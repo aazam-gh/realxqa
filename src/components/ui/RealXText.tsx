@@ -1,8 +1,9 @@
 type RealXTextProps = {
   text: string
+  xClassName?: string
 }
 
-export function RealXText({ text }: RealXTextProps) {
+export function RealXText({ text, xClassName }: RealXTextProps) {
   const parts = text.split('realX')
 
   return (
@@ -11,7 +12,12 @@ export function RealXText({ text }: RealXTextProps) {
         <span key={`${part}-${index}`}>
           {index > 0 && (
             <>
-              real<span className="text-(--realx-green)">X</span>
+              real
+              <span
+                className={`text-(--realx-green)${xClassName ? ` ${xClassName}` : ''}`}
+              >
+                X
+              </span>
             </>
           )}
           {part}

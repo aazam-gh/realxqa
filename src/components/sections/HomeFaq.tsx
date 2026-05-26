@@ -79,7 +79,7 @@ export function HomeFaq() {
           <p>{homeContent.faqs.contactEyebrow}</p>
           <a
             href={`mailto:${supportEmail}`}
-            className="inline-flex w-fit items-center gap-2.5 rounded-[18px] border border-black/10 bg-white px-3.5 py-2 text-sm font-medium text-black transition hover:border-black/30 sm:px-4 sm:py-2.5 sm:text-base"
+            className="inline-flex w-fit items-center gap-2.5 rounded-[18px] border border-black/10 bg-white px-3.5 py-2 text-sm font-medium text-black transition-colors duration-150 ease-out hover:border-[#1cb0f6] hover:bg-[#1cb0f6] hover:text-white sm:px-4 sm:py-2.5 sm:text-base"
           >
             <img
               src={realXAppIcon.src}
