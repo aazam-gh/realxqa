@@ -208,10 +208,12 @@
 }
 
 @supports (animation-timeline: view()) {
-  .realx-feature-card {
-    animation: realx-scroll-lift both;
-    animation-range: entry 0% cover 32%;
-    animation-timeline: view();
+  @media (hover: hover) and (pointer: fine) {
+    .realx-feature-card {
+      animation: realx-scroll-lift both;
+      animation-range: entry 0% cover 32%;
+      animation-timeline: view();
+    }
   }
 }
 

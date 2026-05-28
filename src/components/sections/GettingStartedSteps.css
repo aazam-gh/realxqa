@@ -54,22 +54,24 @@
 }
 
 @supports (animation-timeline: view()) {
-  .realx-step-card {
-    animation: realx-scroll-lift both;
-    animation-range: entry 0% cover 34%;
-    animation-timeline: view();
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .realx-step-card {
+      animation: realx-scroll-lift both;
+      animation-range: entry 0% cover 34%;
+      animation-timeline: view();
+    }
 
-  .realx-step-card__number {
-    animation: realx-step-unlock both;
-    animation-range: entry 12% cover 30%;
-    animation-timeline: view();
-  }
+    .realx-step-card__number {
+      animation: realx-step-unlock both;
+      animation-range: entry 12% cover 30%;
+      animation-timeline: view();
+    }
 
-  .realx-steps-grid::before {
-    animation: realx-line-fill both;
-    animation-range: entry 20% cover 60%;
-    animation-timeline: view();
+    .realx-steps-grid::before {
+      animation: realx-line-fill both;
+      animation-range: entry 20% cover 60%;
+      animation-timeline: view();
+    }
   }
 }
 

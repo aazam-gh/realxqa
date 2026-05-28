@@ -9,9 +9,9 @@ type LayoutProps = {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-(--realx-surface)">
+    <div className="min-h-screen bg-black">
       <Header />
-      <main>{children}</main>
+      <main className="pt-[74px]">{children}</main>
       <Footer />
     </div>
   )
